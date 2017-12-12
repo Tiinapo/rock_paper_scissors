@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+  <script>
+
+  	const options = ["rock", "paper", "scissors"];
+  
+  	//Computer's choice
+ 	function computer_play(){
+ 		let computer_choice = options[Math.floor(Math.random() * options.length)];
+ 		return computer_choice;
+ 	}
+
+ 	// Plays a round of rock-paper-scissors
+ 	function rps_round(player_choice){
+ 		let player_choice = prompt("Choose a move:");
+
+ 		while (options.includes(choice) === false) {
+ 			console.log("Invalid input");
+ 			player_choice = prompt("Choose a move: ")
+ 		}
+
+ 		// Possible outcomes
+ 		if (player_choice === "rock") {
+ 			if (computer_play() === "rock") {
+ 				console.log("It's a draw!")
+ 			else if (computer_play() === "paper")
+ 				console.log("You lose! Paper beats rock.")
+ 			}
+ 			else {
+ 				console.log("You win! Rock beats scissors.")
+ 			}
+ 		}
+
+ 		if (player_choice === "paper") {
+ 			if (computer_play() === "paper") {
+ 				console.log("It's a draw!")
+ 			}
+ 			else if (computer_play() === "scissors") {
+ 				console.log("You lose! Scissors beat paper.")
+ 			}
+ 			else {
+ 				console.log("You win! Paper beats rock.")
+ 			}
+ 		}
+
+ 	}
+
+
+  </script>
+</body>
+</html>
