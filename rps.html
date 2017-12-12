@@ -7,48 +7,99 @@
   <script>
 
   	const options = ["rock", "paper", "scissors"];
+  	let round = 0;
+  	let win = 0;
+  	let lose = 0;
+  	console.log("Begin")
   
-  	//Computer's choice
+  	// Computer's choice
+
  	function computer_play(){
  		let computer_choice = options[Math.floor(Math.random() * options.length)];
  		return computer_choice;
  	}
 
- 	// Plays a round of rock-paper-scissors
- 	function rps_round(player_choice){
- 		let player_choice = prompt("Choose a move:");
+ 	// Function that plays 5 rounds of RPS (in total)
 
- 		while (options.includes(choice) === false) {
- 			console.log("Invalid input");
- 			player_choice = prompt("Choose a move: ")
+ 	function game(){
+
+ 		function rps_round(){
+ 			console.log("I was here")
+ 			let player_choice = prompt("Choose a move:");
+
+ 			while (options.includes(player_choice) === false) {
+ 				console.log("Invalid input");
+ 				player_choice = prompt("Choose a move: ");
+ 			}
+
+ 			// Possible outcomes
+ 			if (player_choice === "rock") {
+ 				if (computer_play() === "rock") {
+ 					console.log("It's a draw!");
+ 				}
+ 				else if (computer_play() === "paper") {
+ 					console.log("You lose! Paper beats rock.");
+ 					lose++;
+ 				}
+ 			    else {
+ 			    	console.log("You win! Rock beats scissors.");
+ 			    	win++;
+ 			    }
+ 		    }
+
+ 		    if (player_choice === "paper") {
+ 		    	if (computer_play() === "paper") {
+ 		    		console.log("It's a draw!");
+ 		    	}
+ 			    else if (computer_play() === "scissors") {
+ 			    	console.log("You lose! Scissors beat paper.");
+ 			    	 lose++;
+ 			    }
+ 			    else {
+ 			    	console.log("You win! Paper beats rock.");
+ 			    	win++;
+ 			    }
+ 			}
+
+ 		   if (player_choice === "scissors") {
+ 		   	    if (computer_play() === "scissors") {
+ 		   	    	console.log("It's a draw!");
+ 		   	    }
+ 			    else if (computer_play() === "rock") {
+ 			    	console.log("You lose! Rock beats scissors.")
+ 			    	 return lose++;
+ 			    }
+ 			    else {
+ 			    	console.log("You win! Scissors beat paper.")
+ 			    	return win++;
+ 			    }
+ 		    }
+ 		    }
+
+ 		// Checks if all the round have been played yet and increments the round variable
+
+ 		while (round < 5) {
+ 			round++;
+ 			rps_round();
  		}
 
- 		// Possible outcomes
- 		if (player_choice === "rock") {
- 			if (computer_play() === "rock") {
- 				console.log("It's a draw!")
- 			else if (computer_play() === "paper")
- 				console.log("You lose! Paper beats rock.")
- 			}
- 			else {
- 				console.log("You win! Rock beats scissors.")
- 			}
+ 		// Checks whether player lost or won after the game has ended
+ 	
+ 		if (win === lose) {
+ 			console.log("The game has ended. It's a draw!")
  		}
-
- 		if (player_choice === "paper") {
- 			if (computer_play() === "paper") {
- 				console.log("It's a draw!")
- 			}
- 			else if (computer_play() === "scissors") {
- 				console.log("You lose! Scissors beat paper.")
- 			}
- 			else {
- 				console.log("You win! Paper beats rock.")
- 			}
+ 		else if (win > lose) {
+ 			console.log("The game has ended. You won!")
  		}
+ 		else {
+ 		    console.log("The game has ended. You lost!")
+ 		}
+ 		
+   }
 
- 	}
+   // Begins the game 
 
+   game();
 
   </script>
 </body>
