@@ -7,10 +7,6 @@
   <script>
 
   	const options = ["rock", "paper", "scissors"];
-  	let round = 0;
-  	let win = 0;
-  	let lose = 0;
-  	console.log("Begin")
   
   	// Computer's choice
 
@@ -23,9 +19,14 @@
 
  	function game(){
 
+ 		let round = 0;
+ 		let win = 0;
+ 		let lose = 0;
+
  		function rps_round(){
- 			console.log("I was here")
+
  			let player_choice = prompt("Choose a move:");
+ 			player_choice = player_choice.toLowerCase();
 
  			while (options.includes(player_choice) === false) {
  				console.log("Invalid input");
