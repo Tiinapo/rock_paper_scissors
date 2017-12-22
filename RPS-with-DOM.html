@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" type="text/css" href="rps.css">
+</head>
+<body>
+
+	<div class="options">
+	  <button id="rock">Rock</button>
+	  <button id="paper">Paper</button>
+	  <button id="scissors">Scissors</button>
+    </div>
+
+    <div class="container">
+      <div id="result"></div>
+    </div>
+	
+  <script>
+
+  	const options = ["rock", "paper", "scissors"];
+  
+  	// Computer's choice
+
+ 	function computer_play(){
+ 		let computer_choice = options[Math.floor(Math.random() * options.length)];
+ 		return computer_choice;
+ 	}
+
+
+ 	function rps_round(player_choice) {
+
+ 		if (player_score === 5) {
+ 			player_score = 0;
+ 			computer_score = 0;
+ 			return ("The game has ended. You won!");
+ 		}
+
+ 		else if (computer_score === 5) {
+ 			player_score = 0;
+ 			computer_score = 0;
+ 			return("The game has ended. The computer won!");
+ 		}
+
+ 		
+ 		else if (player_choice === "rock") {
+
+ 			if (computer_play() === "rock") {
+ 				return "It's a draw!";
+ 			}
+
+ 			else if (computer_play() === "paper") {
+ 				computer_score++;
+ 				return "You lose! Paper beats rock.";
+ 			}
+
+ 			else {
+ 				player_score++;
+ 			    return "You win! Rock beats scissors.";
+ 	
+ 			}
+ 		}
+
+ 		else if (player_choice === "paper") {
+
+ 		    if (computer_play() === "paper") {
+ 		    	return "It's a draw!";
+ 		    }
+
+ 			else if (computer_play() === "scissors") {
+ 				computer_score++;
+ 				return "You lose! Scissors beat paper.";
+ 			}
+
+ 			else {
+ 				player_score++;
+ 				return "You win! Paper beats rock.";
+ 			}
+ 		}
+
+ 		else if (player_choice === "scissors") {
+
+ 			if (computer_play() === "scissors") {
+ 		 		return "It's a draw!";
+ 		   	}
+
+ 			else if (computer_play() === "rock") {
+ 				computer_score++;
+ 				return "You lose! Rock beats scissors.";
+ 			}
+
+ 			else {
+ 				player_score++;
+ 				return "You win! Scissors beat paper.";
+ 			}
+ 		}
+ 	}
+
+ 	
+
+ 	const buttons = document.querySelectorAll("button");
+
+ 	let computer_score = 0;
+ 	let player_score = 0;
+
+
+ 	buttons.forEach((button) => {
+
+ 		
+ 		button.addEventListener ("click", (e) => {
+
+ 			document.getElementById("result").textContent = "Result: " + rps_round(button.id);
+
+ 		});
+
+ 	});
+   
+
+  </script>
+
+
+</body>
+</html>
